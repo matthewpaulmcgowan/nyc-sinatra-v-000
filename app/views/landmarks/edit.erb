@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+  <body>
+    <h1>Old Landmark Information</h1>
+    <h2><%=@landmark.name%></h2>
+    <h2><%=@landmark.year_completed%></h2>
+   
+    
+    <form method="post" action="/landmarks/<%=@landmark.id%>">
+      <h1>Update Landmark</h1>
+      <h1>Please update the name or year of completion</h1>
+          <p>Landmark Name:<input type="text" id="name" name="landmark[name]"></p>
+          <p>Year Completed:<input type="text" id="year_completed" name="landmark[year_completed]"></p>
+          
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <input type="submit" value="Edit Landmark">
+    </form>
+ 

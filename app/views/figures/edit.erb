@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+  <body>
+    <h1>Old Figure Information</h1>
+    <h2><%=@figure.name%></h2>
+    <%@figure.titles.each do |title|%>
+      <h3><%=title.name%></h3>
+    <%end%>
+    <%@figure.landmarks.each do |landmark|%>
+      <h3><%=landmark.name%></h3>
+    <%end%>
+    
+    <form method="post" action="/figures/<%=@figure.id%>">
+      <h1>Update Figure</h1>
+      <h1>Please enter the name, or check/uncheck the titles or landmarks</h1>
+          <p>Figure Name:<input id="figure_name" type="text" name="figure[name]"></p>
+          <%@titles.each do |title|%>
+          <input type="checkbox" id="<%=title.name%>" name="figure[title_ids][]" value="<%=title.id%>" <%='checked' if @figure.titles.include?(title) %>> <%=title.name%></input>
+          <%end%>
+          
+          <%@landmarks.each do |landmark|%>
+          <input type="checkbox" id="<%=landmark.name%>" name="figure[landmark_ids][]" value="<%=landmark.id%>" <%='checked' if @figure.landmarks.include?(landmark) %>> <%=landmark.name%></input>
+          <%end%>
+          
+          <p>New Landmark:<input type="text" id="new_landmark" name="landmark[name]"></p>
+          <p>New Title:<input type="text" id="new_title" name="title[name]"></p>
+          
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <input type="submit" value="Edit Figure">
+    </form>
+  </body>
+ 

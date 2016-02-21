@@ -4,9 +4,9 @@
   </head>
 
   <body>
-    <%@landmarks.each do |landmark|%>
+    <h1><%=@figure.name%></h1>
+    <%@figure.landmarks.each do |landmark|%>
     <h3><%=landmark.name%></h3>
-    <h3><%=landmark.year_completed%></h3>
     <%end%>
   </body>
 </html>
